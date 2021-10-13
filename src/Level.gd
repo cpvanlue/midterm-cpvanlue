@@ -12,7 +12,8 @@ func _ready()-> void:
 	game_Timer()
 	
 func _process(_delta) -> void:
-	$CanvasLayer/TimerLabel.text = str(timer.get_time_left()).pad_decimals(0)
+	$HUD/ScoreLabel.text = "Score: " + str(score)
+	$HUD/TimerLabel.text = str(int(timer.get_time_left()))
 	
 	
 func replaceCoins(positionArray: Array) -> void:
