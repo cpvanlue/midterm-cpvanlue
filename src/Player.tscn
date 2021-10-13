@@ -4,8 +4,8 @@
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 44.5495
-height = 40.9097
+radius = 39.9891
+height = 32.1502
 
 [sub_resource type="RayShape2D" id=2]
 length = 36.5168
@@ -72,7 +72,7 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 49.7669 )
+position = Vector2( -1.05945, 32.8155 )
 shape = SubResource( 1 )
 
 [node name="Ray" type="CollisionShape2D" parent="."]
