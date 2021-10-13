@@ -38,7 +38,6 @@ func game_Timer() -> void:
 
 func _on_Coin_Get() -> void:
 	score += 10
-	print("Score: " + str(score))
 
 
 func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
@@ -47,4 +46,6 @@ func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 		$Player.velocity = Vector2(0,0)
 		$Player/AnimationPlayer.play("Die")
 		yield(get_tree().create_timer(1), "timeout")
+		body.queue_free()
+	if body.name == "Enemy":
 		body.queue_free()
