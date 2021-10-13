@@ -4,7 +4,7 @@ extends KinematicBody2D
 const SPEED := 500
 const GRAVITY := 450
 
-export var jump_impulse := -1400
+export var jump_impulse := -1700
 
 var velocity := Vector2(0, 0)
 
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 
 func reset_gravity_on_floor() -> void:
 	if is_on_floor():
-		velocity.y = 500
+		velocity.y = 1000
 
 
 func set_animation_and_speed(delta: float) -> void:
@@ -46,7 +46,10 @@ func set_animation_and_speed(delta: float) -> void:
 		elif velocity.x > 0:
 			velocity.x -= 200
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y += jump_impulse
+		if Input.is_action_pressed("sprint"):
+				velocity.y += jump_impulse * 1.15
+		else:
+			velocity.y += jump_impulse
 	if Input.is_action_pressed("sprint") and is_on_floor():
 		velocity.x = velocity.x * 1.7
 	else:
