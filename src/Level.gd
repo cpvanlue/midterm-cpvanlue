@@ -10,10 +10,11 @@ func _ready()-> void:
 	var coins = $TileMap.get_used_cells_by_id(22)
 	replaceCoins(coins)
 	game_Timer()
+	$HUD/Labels.visible = true
 	
-func _process(_delta) -> void:
-	$HUD/ScoreLabel.text = "Score: " + str(score)
-	$HUD/TimerLabel.text = str(int(timer.get_time_left()))
+func _process(_delta: float) -> void:
+	$HUD/Labels/ScoreLabel.text = "Score: " + str(score)
+	$HUD/Labels/TimerLabel.text = str(int(timer.get_time_left()))
 	
 	
 func replaceCoins(positionArray: Array) -> void:
@@ -31,7 +32,7 @@ func replaceCoins(positionArray: Array) -> void:
 func game_Timer() -> void:
 	timer = get_tree().create_timer(181)
 	yield(timer, "timeout")
-	$CanvasLayer/TimerLabel.visible = false
+	$HUD/Labels.visible = false
 	_on_KillZone_body_entered($Player)
 	
 
@@ -42,7 +43,7 @@ func _on_Coin_Get() -> void:
 
 func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
-		$CanvasLayer/TimerLabel.visible = false
+		$HUD/Labels.visible = false
 		$Player.velocity = Vector2(0,0)
 		$Player/AnimationPlayer.play("Die")
 		yield(get_tree().create_timer(1), "timeout")
