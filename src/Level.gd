@@ -11,7 +11,7 @@ func _ready()-> void:
 	replaceCoins(coins)
 	game_Timer()
 	
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	$CanvasLayer/TimerLabel.text = str(timer.get_time_left()).pad_decimals(0)
 	
 	
