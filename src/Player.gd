@@ -49,10 +49,7 @@ func check_abilities(delta: float) -> void:
 		$AnimatedSprite.play("duck")
 		$Hitbox.scale.y = 0.3
 		$Hitbox.position.y = 65
-		if velocity.x < 0:
-			velocity.x += 200
-		elif velocity.x > 0:
-			velocity.x -= 200
+		velocity.x = velocity.x / 2
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if Input.is_action_pressed("sprint"):
 				velocity.y += jump_impulse * 1.15
