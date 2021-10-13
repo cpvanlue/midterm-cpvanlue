@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		$AnimatedSprite.play("jump")
 	velocity.x = lerp(velocity.x, 0, 0.15)
+	$Hitbox.scale.y = 1
+	$Hitbox.position.y = 50
 
 
 func reset_gravity_on_floor() -> void:
@@ -37,6 +39,8 @@ func set_animation_and_speed(delta: float) -> void:
 		$AnimatedSprite.play("idle")
 	if Input.is_action_pressed("crouch"):
 		$AnimatedSprite.play("duck")
+		$Hitbox.scale.y = 0.3
+		$Hitbox.position.y = 65
 		if velocity.x < 0:
 			velocity.x += 200
 		elif velocity.x > 0:
