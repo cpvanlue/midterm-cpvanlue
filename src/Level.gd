@@ -4,10 +4,15 @@ extends Node2D
 const COIN := preload("res://src/Coin.tscn")
 
 var score := 0
+var timer
 
-func _ready():
+func _ready()-> void:
 	var coins = $TileMap.get_used_cells_by_id(22)
 	replaceCoins(coins)
+	game_Timer()
+	
+func _process(delta) -> void:
+	$CanvasLayer/TimerLabel.text = str(timer.get_time_left()).pad_decimals(0)
 	
 	
 func replaceCoins(positionArray: Array) -> void:
@@ -20,7 +25,14 @@ func replaceCoins(positionArray: Array) -> void:
 		coin.connect("coin_get", self, "_on_Coin_Get")
 		$TileMap.set_cell(positionArray[i].x, positionArray[i].y, -1)
 		$TileMap.add_child(coin)
-		
+
+
+func game_Timer() -> void:
+	timer = get_tree().create_timer(181)
+	yield(timer, "timeout")
+	$CanvasLayer/TimerLabel.visible = false
+	_on_KillZone_body_entered($Player)
+	
 
 func _on_Coin_Get() -> void:
 	score += 10
@@ -29,6 +41,7 @@ func _on_Coin_Get() -> void:
 
 func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
+		$CanvasLayer/TimerLabel.visible = false
 		$Player.velocity = Vector2(0,0)
 		$Player/AnimationPlayer.play("Die")
 		yield(get_tree().create_timer(1), "timeout")
