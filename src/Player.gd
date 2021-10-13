@@ -37,7 +37,7 @@ func set_animation_and_speed(delta: float) -> void:
 		$AnimatedSprite.play("walk")
 	else:
 		$AnimatedSprite.play("idle")
-	if Input.is_action_pressed("crouch"):
+	if Input.is_action_pressed("crouch") and is_on_floor():
 		$AnimatedSprite.play("duck")
 		$Hitbox.scale.y = 0.3
 		$Hitbox.position.y = 65
