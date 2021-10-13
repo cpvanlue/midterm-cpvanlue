@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 39.9891
-height = 32.1502
+height = 28.0291
 
 [sub_resource type="RayShape2D" id=2]
 length = 36.5168
@@ -72,7 +72,7 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( -1.05945, 32.8155 )
+position = Vector2( 0, 50 )
 shape = SubResource( 1 )
 
 [node name="Ray" type="CollisionShape2D" parent="."]
