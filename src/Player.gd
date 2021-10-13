@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
 
-const SPEED := 350
+const SPEED := 500
 const GRAVITY := 450
 
-export var jump_impulse := -1200
+export var jump_impulse := -1400
 
 var velocity := Vector2(0, 0)
 
