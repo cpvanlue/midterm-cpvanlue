@@ -18,3 +18,8 @@ func replaceCoins(positionArray: Array):
 		$TileMap.add_child(coin)
 
 
+func _on_KillZone_body_entered(body):
+	$Player.velocity = Vector2(0,0)
+	$Player/AnimationPlayer.play("Die")
+	yield(get_tree().create_timer(1), "timeout")
+	body.queue_free()
