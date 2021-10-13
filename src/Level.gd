@@ -16,3 +16,5 @@ func replaceCoins(positionArray: Array):
 		coin.position.y = tilePosition.y + 64
 		$TileMap.set_cell(positionArray[i].x, positionArray[i].y, -1)
 		$TileMap.add_child(coin)
+
+
