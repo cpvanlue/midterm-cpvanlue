@@ -10,6 +10,9 @@ func _ready()-> void:
 	var coins = $TileMap.get_used_cells_by_id(22)
 	replaceCoins(coins)
 	game_Timer()
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		enemy.connect("player_bounce", self, "_on_Coin_Get")
 	$HUD/Labels.visible = true
 
 
