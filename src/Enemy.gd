@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
+
 signal player_bounce
 signal body_hit
 
-var velocity = Vector2(-250,0)
-var lethal = true
+var velocity := Vector2(-250,0)
+var lethal := true
 
 
-func _physics_process(delta: float):
+func _physics_process(delta: float) -> void:
 	var value := move_and_collide(velocity * delta)
 	if value:
 		if (value.collider.name == "TileMap") or ("Enemy" in value.collider.name):

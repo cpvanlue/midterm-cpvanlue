@@ -3,8 +3,8 @@ extends Node2D
 
 func toggle_background() -> void:
 	$Background.play()
-	
-	
+
+
 func play_coin() -> void:
 	$Coin.play()
 

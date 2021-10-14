@@ -3,8 +3,8 @@ extends Node2D
 
 const COIN := preload("res://src/Coin.tscn")
 
-var score := 0
-var timer
+var _score := 0
+
 
 func _ready()-> void:
 	Jukebox.toggle_background()
@@ -20,7 +20,7 @@ func _ready()-> void:
 
 
 func _process(_delta: float) -> void:
-	$HUD/Labels/ScoreLabel.text = "Score: " + str(score)
+	$HUD/Labels/ScoreLabel.text = "Score: " + str(_score)
 	$HUD/Labels/TimerLabel.text = str(int($Timer.get_time_left()))
 
 
@@ -48,15 +48,15 @@ func _on_Replay() -> void:
 
 
 func _on_Coin_Get() -> void:
-	score += 10
+	_score += 10
 	Jukebox.play_coin()
 
 
 func _on_Body_Hit() -> void:
 	Jukebox.play_enemy()
-	score -= 10
-	if score < 0:
-		score = 0
+	_score -= 10
+	if _score < 0:
+		_score = 0
 
 
 func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
@@ -66,7 +66,7 @@ func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 		$Player/AnimationPlayer.play("Die")
 		yield(get_tree().create_timer(1), "timeout")
 		body.queue_free()
-		$HUD/GameOverHUD/ColorRect/ScoreLabel.text = "Score: " + str(score)
+		$HUD/GameOverHUD/ColorRect/ScoreLabel.text = "Score: " + str(_score)
 		$HUD/GameOverHUD.visible = true
 	if body.name == "Enemy":
 		body.queue_free()
@@ -80,8 +80,8 @@ func _on_Flag_body_entered(body):
 		get_tree().paused = true
 		$HUD/Labels.visible = false
 		$Timer.paused = true
-		score += $Timer.get_time_left() * 100
+		_score += $Timer.get_time_left() * 100
 		$Flag/AnimatedSprite.animation = "active"
 		$HUD/GameOverHUD/ColorRect/GameOver.text = "You Win!"
-		$HUD/GameOverHUD/ColorRect/ScoreLabel.text = "Score: " + str(score)
+		$HUD/GameOverHUD/ColorRect/ScoreLabel.text = "Score: " + str(_score)
 		$HUD/GameOverHUD.visible = true
