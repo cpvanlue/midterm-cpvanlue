@@ -42,5 +42,3 @@ shape = SubResource( 1 )
 frames = SubResource( 5 )
 animation = "inactive"
 playing = true
-
-[connection signal="body_entered" from="." to="." method="_on_Flag_body_entered"]
