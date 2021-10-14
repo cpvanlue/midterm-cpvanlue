@@ -66,3 +66,15 @@ func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 		$HUD/GameOverHUD.visible = true
 	if body.name == "Enemy":
 		body.queue_free()
+
+
+func _on_Flag_body_entered(body):
+	if body.name == "Player":
+		get_tree().paused = true
+		pause_mode = PAUSE_MODE_PROCESS
+		$Timer.paused = true
+		score += $Timer.get_time_left() * 100
+		$Flag/AnimatedSprite.animation = "active"
+		$HUD/GameOverHUD/ColorRect/GameOver.text = "You Win!"
+		$HUD/GameOverHUD/ColorRect/ScoreLabel.text = "Score: " + str(score)
+		$HUD/GameOverHUD.visible = true

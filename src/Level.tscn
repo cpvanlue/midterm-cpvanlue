@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/spritesheet_ground.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/colored_grass.png" type="Texture" id=5]
 [ext_resource path="res://src/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Flag.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -592,4 +593,8 @@ position = Vector2( 7356.91, 449.212 )
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Flag" parent="." instance=ExtResource( 8 )]
+position = Vector2( 10617.5, 448.568 )
+
 [connection signal="body_entered" from="KillZone" to="." method="_on_KillZone_body_entered"]
+[connection signal="body_entered" from="Flag" to="." method="_on_Flag_body_entered"]
