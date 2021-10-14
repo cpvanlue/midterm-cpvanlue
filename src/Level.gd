@@ -43,6 +43,7 @@ func game_Timer() -> void:
 
 func _on_Replay() -> void:
 	var _ignored = get_tree().change_scene("res://src/MainMenu.tscn")
+	get_tree().paused = false
 
 
 func _on_Coin_Get() -> void:
@@ -72,6 +73,7 @@ func _on_Flag_body_entered(body):
 	if body.name == "Player":
 		get_tree().paused = true
 		pause_mode = PAUSE_MODE_PROCESS
+		$HUD/Labels.visible = false
 		$Timer.paused = true
 		score += $Timer.get_time_left() * 100
 		$Flag/AnimatedSprite.animation = "active"
