@@ -556,6 +556,7 @@ position = Vector2( 277.034, 337.332 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+zoom = Vector2( 1.5, 1.5 )
 limit_left = -250
 limit_right = 11500
 limit_bottom = 700
@@ -574,13 +575,19 @@ texture = ExtResource( 5 )
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
-[node name="Enemy" parent="." instance=ExtResource( 7 )]
+[node name="Enemy" parent="." groups=[
+"Enemies",
+] instance=ExtResource( 7 )]
 position = Vector2( 3378.37, 445.891 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+[node name="Enemy2" parent="." groups=[
+"Enemies",
+] instance=ExtResource( 7 )]
 position = Vector2( 2963.98, 443.943 )
 
-[node name="Enemy3" parent="." instance=ExtResource( 7 )]
+[node name="Enemy3" parent="." groups=[
+"Enemies",
+] instance=ExtResource( 7 )]
 position = Vector2( 7356.91, 449.212 )
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_KillZone_body_entered"]

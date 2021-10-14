@@ -3,14 +3,14 @@
 [ext_resource path="res://assets/ZCOOLKuaiLe-Regular.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 36
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
+size = 36
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -32,10 +32,10 @@ __meta__ = {
 }
 
 [node name="TimerLabel" type="Label" parent="Labels"]
-margin_left = 1789.92
-margin_top = 30.0
-margin_right = 1875.92
-margin_bottom = 80.0
+margin_left = 1173.32
+margin_top = 24.3431
+margin_right = 1259.32
+margin_bottom = 74.3431
 custom_fonts/font = SubResource( 2 )
 text = "180"
 __meta__ = {
