@@ -20,7 +20,7 @@ func _ready()-> void:
 
 func _process(_delta: float) -> void:
 	$HUD/Labels/ScoreLabel.text = "Score: " + str(score)
-	$HUD/Labels/TimerLabel.text = str(int(timer.get_time_left()))
+	$HUD/Labels/TimerLabel.text = str(int($Timer.get_time_left()))
 
 
 func replaceCoins(positionArray: Array) -> void:
@@ -36,8 +36,7 @@ func replaceCoins(positionArray: Array) -> void:
 
 
 func game_Timer() -> void:
-	timer = get_tree().create_timer(181)
-	yield(timer, "timeout")
+	$Timer.start(181); yield($Timer, "timeout")
 	$HUD/Labels.visible = false
 	_on_KillZone_body_entered($Player)
 

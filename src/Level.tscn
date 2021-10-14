@@ -590,4 +590,6 @@ position = Vector2( 2963.98, 443.943 )
 ] instance=ExtResource( 7 )]
 position = Vector2( 7356.91, 449.212 )
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="KillZone" to="." method="_on_KillZone_body_entered"]
