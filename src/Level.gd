@@ -14,6 +14,7 @@ func _ready()-> void:
 	for enemy in enemies:
 		enemy.connect("player_bounce", self, "_on_Coin_Get")
 		enemy.connect("body_hit", self, "_on_Body_Hit")
+	var _ignored = $HUD.connect("replay", self, "_on_Replay")
 	$HUD/Labels.visible = true
 
 
@@ -41,8 +42,13 @@ func game_Timer() -> void:
 	_on_KillZone_body_entered($Player)
 
 
+func _on_Replay() -> void:
+	var _ignored = get_tree().reload_current_scene()
+
+
 func _on_Coin_Get() -> void:
 	score += 10
+
 
 func _on_Body_Hit() -> void:
 	score -= 10
@@ -57,5 +63,7 @@ func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 		$Player/AnimationPlayer.play("Die")
 		yield(get_tree().create_timer(1), "timeout")
 		body.queue_free()
+		$HUD/GameOverHUD/ColorRect/ScoreLabel.text = "Score: " + str(score)
+		$HUD/GameOverHUD.visible = true
 	if body.name == "Enemy":
 		body.queue_free()

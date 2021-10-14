@@ -51,7 +51,7 @@ shape = SubResource( 1 )
 position = Vector2( -4.09476, 22.9936 )
 frames = SubResource( 6 )
 animation = "walk"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
