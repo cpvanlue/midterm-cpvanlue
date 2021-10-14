@@ -7,6 +7,7 @@ var score := 0
 var timer
 
 func _ready()-> void:
+	Jukebox.toggle_background()
 	var coins = $TileMap.get_used_cells_by_id(22)
 	replaceCoins(coins)
 	game_Timer()
@@ -48,9 +49,11 @@ func _on_Replay() -> void:
 
 func _on_Coin_Get() -> void:
 	score += 10
+	Jukebox.play_coin()
 
 
 func _on_Body_Hit() -> void:
+	Jukebox.play_enemy()
 	score -= 10
 	if score < 0:
 		score = 0
@@ -71,8 +74,10 @@ func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
 
 func _on_Flag_body_entered(body):
 	if body.name == "Player":
-		get_tree().paused = true
+		Jukebox.pause_mode = PAUSE_MODE_PROCESS
+		Jukebox.play_win()
 		pause_mode = PAUSE_MODE_PROCESS
+		get_tree().paused = true
 		$HUD/Labels.visible = false
 		$Timer.paused = true
 		score += $Timer.get_time_left() * 100
