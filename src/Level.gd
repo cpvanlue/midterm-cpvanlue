@@ -13,6 +13,7 @@ func _ready()-> void:
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	for enemy in enemies:
 		enemy.connect("player_bounce", self, "_on_Coin_Get")
+		enemy.connect("body_hit", self, "_on_Body_Hit")
 	$HUD/Labels.visible = true
 
 
@@ -42,6 +43,11 @@ func game_Timer() -> void:
 
 func _on_Coin_Get() -> void:
 	score += 10
+
+func _on_Body_Hit() -> void:
+	score -= 10
+	if score < 0:
+		score = 0
 
 
 func _on_KillZone_body_entered(body: PhysicsBody2D) -> void:
