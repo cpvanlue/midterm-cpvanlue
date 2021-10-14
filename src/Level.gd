@@ -42,7 +42,7 @@ func game_Timer() -> void:
 
 
 func _on_Replay() -> void:
-	var _ignored = get_tree().change_scene("res://MainMenu.tscn")
+	var _ignored = get_tree().change_scene("res://src/MainMenu.tscn")
 
 
 func _on_Coin_Get() -> void:
