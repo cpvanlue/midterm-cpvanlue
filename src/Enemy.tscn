@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Enemy.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 26, 48.822 )
+extents = Vector2( 26, 35.3997 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
