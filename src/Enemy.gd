@@ -26,6 +26,6 @@ func _physics_process(delta: float):
 
 func lethal_recovery() -> void:
 	lethal = false
-	$RecoveryTimer.start(2); yield($RecoveryTimer, "timeout")
+	$RecoveryTimer.start(1); yield($RecoveryTimer, "timeout")
 	lethal = true
 	
